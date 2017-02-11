@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Http } from '@angular/http';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +15,10 @@ export class AppComponent {
 
   todo;
 
+  constructor(private http: Http) {
+
+  }
+
   add(item: HTMLInputElement) {
     if(item.value) {
       // this.todos.push({
@@ -24,7 +30,21 @@ export class AppComponent {
     }
   }
 
+  remove(item) {
+    let idx = this.todos.indexOf(item);
+    this.todos.splice(idx, 1);
+
+    this.todos = [...this.todos];
+  }
+
   clearCompleted() {
     this.todos = this.todos.filter(v => !v.done);
+  }
+
+  toggleAll(status: boolean) {
+    this.todos = this.todos.map(v => {
+      v.done = status;
+      return v;
+    });
   }
 }
