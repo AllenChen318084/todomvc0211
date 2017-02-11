@@ -11,6 +11,8 @@ export class AppComponent {
 
   todos: string[] = [];
 
+  todo;
+
   add(item: HTMLInputElement) {
     this.todos.push(item.value);
     item.value = '';
