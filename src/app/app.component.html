@@ -2,7 +2,9 @@
 <section class="todoapp">
   <header class="header">
     <app-title></app-title>
-    <input class="new-todo" [placeholder]="inputHint" autofocus [(ngModel)]="todo" (keyup.enter)="add(newTodo)" #newTodo>
+    <input class="new-todo" [placeholder]="inputHint" autofocus
+      [ngModel]="todo" (ngModelChange)="todo=$event"
+      (keyup.enter)="add(newTodo)" #newTodo>
   </header>
   <!-- This section should be hidden by default and shown when there are todos -->
   <section class="main" *ngIf="todos?.length > 0">

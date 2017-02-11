@@ -7,7 +7,17 @@ import {Input, Output, EventEmitter, Component,  OnInit} from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  @Input() todos: any[];
+  toomuch = false;
+
+  private _todos: any[];
+  get todos(): any[] {
+    return this._todos;
+  }
+  @Input() 
+  set todos(value: any[]) {
+    this._todos = value;
+    this.toomuch = value.length > 5;
+  }
 
   @Output() clearCompleted = new EventEmitter<any>();
 

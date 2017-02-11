@@ -14,11 +14,14 @@ export class AppComponent {
   todo;
 
   add(item: HTMLInputElement) {
-    this.todos.push({
-      value: item.value,
-      done: false
-    });
-    item.value = '';
+    if(item.value) {
+      // this.todos.push({
+      //   value: item.value,
+      //   done: false
+      // });
+      this.todos = [...this.todos, { value: item.value, done: false }];
+      item.value = '';
+    }
   }
 
   clearCompleted() {
