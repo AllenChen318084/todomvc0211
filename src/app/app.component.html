@@ -24,9 +24,10 @@
     </ul>
   </section>
   <!-- This footer should hidden by default and shown when there are todos -->
-  <app-footer [todos]="todos" (clearCompleted)="clearCompleted()"></app-footer>
+  <app-footer #myFooter [todos]="todos" (clearCompleted)="clearCompleted()"></app-footer>
 </section>
 <footer class="info">
+  <button (click)="myFooter.btnClear()">清除已完成的待辦工作</button>
   <p>Double-click to edit a todo</p>
   <!-- Remove the below line ↓ -->
   <p>Template by <a href="http://sindresorhus.com">Sindre Sorhus</a></p>
