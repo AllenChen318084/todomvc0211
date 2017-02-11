@@ -7,13 +7,15 @@ import {Input, Output, EventEmitter, Component,  OnInit} from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  filter_type: string = 'All';
+
   toomuch = false;
 
   private _todos: any[];
   get todos(): any[] {
     return this._todos;
   }
-  @Input() 
+  @Input()
   set todos(value: any[]) {
     this._todos = value;
     this.toomuch = value.length > 5;
