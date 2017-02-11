@@ -1,4 +1,4 @@
-import {Input, Component,  OnInit} from '@angular/core';
+import {Input, Output, EventEmitter, Component,  OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -9,6 +9,8 @@ export class FooterComponent implements OnInit {
 
   @Input() todos: any[];
 
+  @Output() clearCompleted = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +18,9 @@ export class FooterComponent implements OnInit {
 
   get active_items() {
     return this.todos.filter(v => !v.done).length;
+  }
+
+  btnClear() {
+    this.clearCompleted.emit();
   }
 }
